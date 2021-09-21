@@ -11,7 +11,10 @@ public class Degree {
     }
 
     public Integer getDegree() {
-        return degree;
+        if (Math.abs(this.degree) >= 360){
+            return Math.abs(degree) % 360;
+        }
+        return Math.abs(degree);
     }
 
     public Degree setDegree(Integer degree) {
