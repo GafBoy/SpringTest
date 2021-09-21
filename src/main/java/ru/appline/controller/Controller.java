@@ -35,12 +35,12 @@ public class Controller {
 
     @DeleteMapping(value = "/deletePet", consumes = "application/json", produces = "application/json")
     public void deletePet(@RequestParam("id") int id){
-        petModel.delete(id);
+        petModel.deleteIfExist(id);
     }
 
     @PutMapping(value = "/updatePet", consumes = "application/json", produces = "application/json")
     public Pet updatePet(@RequestBody Pet pet){
-        petModel.edit(pet);
+        petModel.editIfExist(pet);
         return pet;
     }
 

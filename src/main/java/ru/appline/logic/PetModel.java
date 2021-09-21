@@ -19,11 +19,19 @@ public class PetModel implements Serializable {
     public void add(Pet pet, int id) {
         model.put(id, pet);
     }
-    public void edit(Pet pet){
-        model.put(pet.getId(), pet);
+    public void editIfExist(Pet pet){
+        if(model.containsKey(pet.getId())){
+            model.put(pet.getId(), pet);
+        }else{
+            throw new RuntimeException("There is no Pet with id '"+ pet.getId() +"' ");
+        }
     }
-    public void delete(int id){
-        model.remove(id);
+    public void deleteIfExist(int id){
+        if(model.containsKey(id)){
+            model.remove(id);
+        }else{
+            throw new RuntimeException("There is no Pet with id '"+ id +"' ");
+        }
     }
 
     public Pet getFromList (int id){
